@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import { HomePage} from "./pages/HomePage";
+import { CrearAccion} from "./components/CrearAccion";
+import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const theme = createTheme({
+    palette: {
+      background: {
+        default: 'white',
+      },
+    },
+  });
+
+    const App = () => {
+        return (
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Routes>
+              <Route path="/" element={<CrearAccion/>} />
+              <Route path="/cerrar" element={<HomePage />} />
+            </Routes>
+          </ThemeProvider>
+        );
+      };
 
 export default App;
